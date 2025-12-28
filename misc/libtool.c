@@ -364,7 +364,7 @@ char **envp)
 	    p++;
 	else
 	    p = argv[0];
-	if(strncmp(p, "ranlib", sizeof("ranlib") - 1) == 0)
+	if(strstr(p, "ranlib"))
 	    cmd_flags.ranlib = TRUE;
 
 	/* The default is to used long names */
