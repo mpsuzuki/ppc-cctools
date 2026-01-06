@@ -76,7 +76,7 @@ ifeq "macos" "$(RC_OS)"
 else
   ARCHIVEDIR = /Local/Developer/System
 endif
-DYLIBDIR = /usr/lib/system
+DYLIBDIR ?= /usr/lib/system
 
 CFILES = arch.c getsecbyname.c getsegbyname.c get_end.c \
 	 swap.c hppa_swap.c i386_swap.c m68k_swap.c sparc_swap.c \
@@ -141,7 +141,7 @@ profile_ofiles:	$(OBJROOT)/profile_obj $(OBJROOT)/ptmp_obj
 	then								\
 	    (cd ptmp_obj;						\
 		$(MAKE) -f ../Makefile libmacho_pg.a libmacho_profile.dylib \
-		INSTALL_NAME=/usr/lib/system/libmacho_profile.dylib	\
+		INSTALL_NAME=$(DYLIBDIR)/libmacho_profile.dylib		\
 		VPATH=.. 						\
 		OFILE_DIR=.						\
 		SRCROOT=..						\
@@ -160,7 +160,7 @@ profile_ofiles:	$(OBJROOT)/profile_obj $(OBJROOT)/ptmp_obj
 	    (cd $(OBJROOT)/ptmp_obj;					\
 		$(MAKE) -f $(SRCROOT)/Makefile libmacho_pg.a		\
 		libmacho_profile.dylib					\
-		INSTALL_NAME=/usr/lib/system/libmacho_profile.dylib	\
+		INSTALL_NAME=$(DYLIBDIR)/libmacho_profile.dylib		\
 		VPATH=$(SRCROOT)					\
 		OFILE_DIR=$(OBJROOT)/ptmp_obj				\
 		SRCROOT=$(SRCROOT)					\
@@ -256,7 +256,7 @@ dynamic_ofiles: $(OBJROOT)/dynamic_obj $(OBJROOT)/dtmp_obj
 	then								\
 	    (cd dtmp_obj;						\
 		$(MAKE) -f ../Makefile libmacho.a libmacho.dylib	\
-		INSTALL_NAME=/usr/lib/system/libmacho.dylib		\
+		INSTALL_NAME=$(DYLIBDIR)/libmacho.dylib			\
 		VPATH=.. 						\
 		OFILE_DIR=.						\
 		SRCROOT=..						\
@@ -267,7 +267,7 @@ dynamic_ofiles: $(OBJROOT)/dynamic_obj $(OBJROOT)/dtmp_obj
 		RC_ARCHS="$(RC_ARCHS)");				\
 	    (cd dtmp_obj;						\
 		$(MAKE) -f ../Makefile libmacho_debug.dylib		\
-		INSTALL_NAME=/usr/lib/system/libmacho_debug.dylib	\
+		INSTALL_NAME=$(DYLIBDIR)/libmacho_debug.dylib		\
 		VPATH=.. 						\
 		OFILE_DIR=.						\
 		SRCROOT=..						\
@@ -283,7 +283,7 @@ dynamic_ofiles: $(OBJROOT)/dynamic_obj $(OBJROOT)/dtmp_obj
 	else								\
 	    (cd $(OBJROOT)/dtmp_obj;					\
 		$(MAKE) -f $(SRCROOT)/Makefile libmacho.a libmacho.dylib \
-		INSTALL_NAME=/usr/lib/system/libmacho.dylib		\
+		INSTALL_NAME=$(DYLIBDIR)/libmacho.dylib			\
 		VPATH=$(SRCROOT)					\
 		OFILE_DIR=$(OBJROOT)/dtmp_obj				\
 		SRCROOT=$(SRCROOT)					\
@@ -295,7 +295,7 @@ dynamic_ofiles: $(OBJROOT)/dynamic_obj $(OBJROOT)/dtmp_obj
 		RC_ARCHS="$(RC_ARCHS)");				\
 	    (cd $(OBJROOT)/dtmp_obj;					\
 		$(MAKE) -f $(SRCROOT)/Makefile libmacho_debug.dylib	\
-		INSTALL_NAME=/usr/lib/system/libmacho_debug.dylib	\
+		INSTALL_NAME=$(DYLIBDIR)/libmacho_debug.dylib		\
 		VPATH=$(SRCROOT)					\
 		OFILE_DIR=$(OBJROOT)/dtmp_obj				\
 		SRCROOT=$(SRCROOT)					\
