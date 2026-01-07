@@ -121,18 +121,28 @@ all:	$(OFILE_DIRS) $(SYM_DIRS) driver_build a68_build a88_build a386_build \
 
 all_test:	a68_test a88_test a860_test a386_test appc_test ahppa_test
 
+LIBEXEC_CFLAGS =
+
+ifneq "" "$(CCTOOLS_LIBEXEC_RELATIVE)"
+  LIBEXEC_CFLAGS += -DCCTOOLS_LIBEXEC_RELATIVE=\\\"$(CCTOOLS_LIBEXEC_RELATIVE)\\\"
+endif
+
+ifneq "" "$(CCTOOLS_LOCAL_LIBEXEC_RELATIVE)"
+  LIBEXEC_CFLAGS += -DCCTOOLS_LOCAL_LIBEXEC_RELATIVE=\\\"$(CCTOOLS_LOCAL_LIBEXEC_RELATIVE)\\\"
+endif
+
 driver_build:	$(OBJROOT)/driver_dir
 	@if [ $(SRCROOT) = . ];						\
 	then								\
 	    cd driver_dir;  $(MAKE) -f ../Makefile driver VPATH=..	\
-		CFLAGS="-g -Os -I../../include $(GCC_FLAGS) $(SDK)"	\
+		CFLAGS="-g -Os -I../../include $(GCC_FLAGS) $(SDK) $(LIBEXEC_CFLAGS)"	\
 		VERS_STRING_FLAGS="$(VERS_STRING_FLAGS)" OFILE_DIR=.	\
 		RC_FLAGS="$(RC_CFLAGS)" DEP_DIR=driver_dir;		\
 	else								\
 	    cd $(OBJROOT)/driver_dir; $(MAKE) -f $(SRCROOT)/Makefile	\
 		driver VPATH=$(SRCROOT) OFILE_DIR=$(OBJROOT)/driver_dir \
 		SYMROOT=$(SYMROOT)/driver_dir SRCROOT=$(SRCROOT)	\
-		CFLAGS="-g -Os -I$(SRCROOT)/../include $(GCC_FLAGS) $(SDK)" \
+		CFLAGS="-g -Os -I$(SRCROOT)/../include $(GCC_FLAGS) $(SDK) $(LIBEXEC_CFLAGS)" \
 		VERS_STRING_FLAGS="$(VERS_STRING_FLAGS)"		\
 		RC_FLAGS="$(RC_CFLAGS)" DEP_DIR=driver_dir;		\
 	fi

@@ -28,14 +28,18 @@ char **argv,
 char **envp)
 {
     const char *LIB =
-#if defined(__OPENSTEP__) || defined(__HERA__) || \
+#ifdef CCTOOLS_LIBEXEC_RELATIVE
+		    CCTOOLS_LIBEXEC_RELATIVE "/cctools/";
+#elif defined(__OPENSTEP__) || defined(__HERA__) || \
     defined(__GONZO_BUNSEN_BEAKER__) || defined(__KODIAK__)
 		    "../libexec/";
 #else
 		    "../libexec/gcc/darwin/";
 #endif
     const char *LOCALLIB =
-#if defined(__OPENSTEP__) || defined(__HERA__) || \
+#ifdef CCTOOLS_LOCAL_LIBEXEC_RELATIVE
+		    CCTOOLS_LOCAL_LIBEXEC_RELATIVE "/cctools/";
+#elif defined(__OPENSTEP__) || defined(__HERA__) || \
     defined(__GONZO_BUNSEN_BEAKER__) || defined(__KODIAK__)
 		    "../local/libexec/";
 #else
