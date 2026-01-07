@@ -27,8 +27,17 @@ int argc,
 char **argv,
 char **envp)
 {
+#ifdef CCTOOLS_LIBEXEC_RELATIVE
+    const char *LIB = CCTOOLS_LIBEXEC_RELATIVE "/cctools/";
+#else
     const char *LIB = "../libexec/as/";
+#endif
+
+#ifdef CCTOOLS_LOCAL_LIBEXEC_RELATIVE
+    const char *LOCALLIB = CCTOOLS_LOCAL_LIBEXEC_RELATIVE "/cctools/";
+#else
     const char *LOCALLIB = "../local/libexec/as/";
+#endif
     const char *AS = "/as";
 
     int i, j;
