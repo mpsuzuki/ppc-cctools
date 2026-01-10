@@ -32,6 +32,11 @@
 #include "string.h"
 #include "mach-o/loader.h"
 #include "objc/objc-runtime.h"
+#ifndef CLS_GETINFO
+# define	CLS_GETINFO(cls,infomask)	((cls)->info & (infomask))
+# define	CLS_CLASS               0x1
+# define	CLS_META                0x2
+#endif
 #include "stuff/allocate.h"
 #include "stuff/bytesex.h"
 #include "stuff/symbol.h"
