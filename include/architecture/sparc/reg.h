@@ -39,31 +39,31 @@
  * registers relative to R0.
  * Usage is u.u_ar0[XX].
  */
-#define	PSR	(0)
-#define	PC	(1)
-#define	nPC	(2)
-#define	SPARC_Y	(3)
-#define	G1	(4)
-#define	G2	(5)
-#define	G3	(6)
-#define	G4	(7)
-#define	G5	(8)
-#define	G6	(9)
-#define	G7	(10)
-#define	O0	(11)
-#define	O1	(12)
-#define	O2	(13)
-#define	O3	(14)
-#define	O4	(15)
-#define	O5	(16)
-#define	O6	(17)
-#define	O7	(18)
+#define	SPARC_RT_PSR_W	(0)
+#define	SPARC_RT_PC_W	(1)
+#define	SPARC_RT_nPC_W	(2)
+#define	SPARC_RT_SPARC_Y_W	(3)
+#define	SPARC_RT_G1_W	(4)
+#define	SPARC_RT_G2_W	(5)
+#define	SPARC_RT_G3_W	(6)
+#define	SPARC_RT_G4_W	(7)
+#define	SPARC_RT_G5_W	(8)
+#define	SPARC_RT_G6_W	(9)
+#define	SPARC_RT_G7_W	(10)
+#define	SPARC_RT_O0_W	(11)
+#define	SPARC_RT_O1_W	(12)
+#define	SPARC_RT_O2_W	(13)
+#define	SPARC_RT_O3_W	(14)
+#define	SPARC_RT_O4_W	(15)
+#define	SPARC_RT_O5_W	(16)
+#define	SPARC_RT_O6_W	(17)
+#define	SPARC_RT_O7_W	(18)
 
 /* the following defines are for portability */
-#define	PS	PSR
-#define	SP	O6
-#define	R0	O0
-#define	R1	O1
+#define	SPARC_RT_PS_W	SPARC_RT_PSR_W
+#define	SPARC_RT_SP_W	SPARC_RT_O6_W
+#define	SPARC_RT_R0_W	SPARC_RT_O0_W
+#define	SPARC_RT_R1_W	SPARC_RT_O1_W
 
 /*
  * And now for something completely the same...
