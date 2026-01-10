@@ -18,10 +18,10 @@ endif
 
 ifeq "cctools_ofiles_Sim" "$(RC_ProjectName)"
   S = _sim
-  DEPENDENT_LIBS = -nodefaultlibs -umbrella System -L/usr/lib/system \
+  DEPENDENT_LIBSX = -nodefaultlibs -umbrella System -L/usr/lib/system \
 		   -ldyld$S -lsystem$S_c -lcompiler_rt$S -Wl,-upward-lSystem
 else
-  DEPENDENT_LIBS = -nodefaultlibs -umbrella System -L/usr/lib/system \
+  DEPENDENT_LIBSX = -nodefaultlibs -umbrella System -L/usr/lib/system \
 		   -ldyld $(LIBMALLOC) -lsystem_c -lsystem_kernel \
 		   -lcompiler_rt
 endif
