@@ -27,8 +27,13 @@ int argc,
 char **argv,
 char **envp)
 {
+#ifdef REAL_AS_SUBDIR
+    const char *LIB = "../libexec/" REAL_AS_SUBDIR;
+    const char *LOCALLIB = "../local/libexec/" REAL_AS_SUBDIR;
+#else
     const char *LIB = "../libexec/as/";
     const char *LOCALLIB = "../local/libexec/as/";
+#endif
     const char *AS = "/as";
 
     int i, j;
