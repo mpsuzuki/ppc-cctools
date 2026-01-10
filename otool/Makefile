@@ -61,10 +61,6 @@ $(PRODUCT).NEW:	$(OFILE_DIR) $(SYMROOT) $(OBJS)
 .c.o:
 	$(CC) $(CFLAGS) $(RC_CFLAGS) -c -o $(OFILE_DIR)/$*.o $<
 
-print_objc.o: print_objc.c
-	$(CC) $(CFLAGS) $(RC_CFLAGS) -c -o $(OFILE_DIR)/$*.o \
-		-isysroot $(SYSROOT_OBJC) $<
-
 ofile.o: $(SRCROOT)/../libstuff/ofile.c
 	$(CC) $(CFLAGS) $(RC_CFLAGS) -c -o $(OFILE_DIR)/$*.o \
 		$(SRCROOT)/../libstuff/ofile.c -DOTOOL
