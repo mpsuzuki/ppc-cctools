@@ -85,9 +85,9 @@ shlib_clean:
 
 install: all
 	$(MKDIRS) $(DSTROOT)$(USRBINDIR)
-	install -c -s -m 555 $(SYMROOT)/$(PRODUCT).NEW \
+	install -c -s -m 755 $(SYMROOT)/$(PRODUCT).NEW \
 		$(DSTROOT)$(USRBINDIR)/$(PRODUCT)-classic
-	install -c -s -m 555 $(SYMROOT)/llvm-otool.NEW \
+	install -c -s -m 755 $(SYMROOT)/llvm-otool.NEW \
 		$(DSTROOT)$(USRBINDIR)/llvm-otool
 	(cd $(DSTROOT)$(USRBINDIR); rm -f otool; ln -s llvm-otool otool)
 
@@ -95,7 +95,7 @@ installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(OFILE_DIR) $(SYMROOT):
 	$(MKDIRS) $@

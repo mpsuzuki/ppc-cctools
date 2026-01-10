@@ -382,47 +382,47 @@ installsrc installGASsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 install: all
 	$(MKDIRS) $(DSTROOT)$(LIBDIR)/i386
-	install -c -s -m 555 $(SYMROOT)/a386_dir/as \
+	install -c -s -m 755 $(SYMROOT)/a386_dir/as \
 		$(DSTROOT)$(LIBDIR)/i386/as
 	$(MKDIRS) $(DSTROOT)$(LIBDIR)/x86_64
-	install -c -s -m 555 $(SYMROOT)/ax86_64_dir/as \
+	install -c -s -m 755 $(SYMROOT)/ax86_64_dir/as \
 		$(DSTROOT)$(LIBDIR)/x86_64/as
 	$(MKDIRS) $(DSTROOT)$(USRBINDIR)
-	install -c -s -m 555 $(SYMROOT)/driver_dir/driver \
+	install -c -s -m 755 $(SYMROOT)/driver_dir/driver \
 		$(DSTROOT)$(USRBINDIR)/as	
 	$(MKDIRS) $(DSTROOT)/usr/local/OpenSourceVersions/
-	install -c -s -m 444 $(SRCROOT)/cctools.plist \
+	install -c -s -m 644 $(SRCROOT)/cctools.plist \
 		$(DSTROOT)/usr/local/OpenSourceVersions/cctools.plist
 	$(MKDIRS) $(DSTROOT)/usr/local/OpenSourceLicenses/
-	install -c -s -m 444 $(SRCROOT)/COPYING \
+	install -c -s -m 644 $(SRCROOT)/COPYING \
 		$(DSTROOT)/usr/local/OpenSourceLicenses/cctools.txt
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/ppc
-	install -c -s -m 555 $(SYMROOT)/appc_dir/as \
+	install -c -s -m 755 $(SYMROOT)/appc_dir/as \
 		$(DSTROOT)$(LOCLIBDIR)/ppc/as
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/ppc64
-	install -c -s -m 555 $(SYMROOT)/appc64_dir/as \
+	install -c -s -m 755 $(SYMROOT)/appc64_dir/as \
 		$(DSTROOT)$(LOCLIBDIR)/ppc64/as
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/m68k
-	install -c -s -m 555 $(SYMROOT)/a68_dir/as \
+	install -c -s -m 755 $(SYMROOT)/a68_dir/as \
 		$(DSTROOT)$(LOCLIBDIR)/m68k/as
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/sparc 
-	install -c -s -m 555 $(SYMROOT)/asparc_dir/as \
+	install -c -s -m 755 $(SYMROOT)/asparc_dir/as \
 		$(DSTROOT)$(LOCLIBDIR)/sparc/as
 	$(MKDIRS) $(DSTROOT)$(LIBDIR)/arm
-	install -c -s -m 555 $(SYMROOT)/aarm_dir/as \
+	install -c -s -m 755 $(SYMROOT)/aarm_dir/as \
 		$(DSTROOT)$(LIBDIR)/arm/as
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/m88k
-	install -c -s -m 555 $(SYMROOT)/a88_dir/as \
+	install -c -s -m 755 $(SYMROOT)/a88_dir/as \
 		$(DSTROOT)$(LOCLIBDIR)/m88k/as
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/hppa
-	install -c -s -m 555 $(SYMROOT)/ahppa_dir/as \
+	install -c -s -m 755 $(SYMROOT)/ahppa_dir/as \
 		$(DSTROOT)$(LOCLIBDIR)/hppa/as
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)/i860
-	install -s -m 555 $(SYMROOT)/a860_dir/as \
+	install -s -m 755 $(SYMROOT)/a860_dir/as \
 		$(DSTROOT)$(LOCLIBDIR)/i860/as
 
 $(OFILE_DIRS) $(SYM_DIRS):

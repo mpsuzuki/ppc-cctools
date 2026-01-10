@@ -42,7 +42,7 @@ installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(SYMROOT):
 	$(MKDIRS) $@
@@ -61,7 +61,7 @@ libsyminfo.a: libsyminfo.o
 
 lib_ofiles_install: lib_ofiles
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)
-	install -p -c -m 444 $(SYMROOT)/libsyminfo.a \
+	install -p -c -m 644 $(SYMROOT)/libsyminfo.a \
 		$(DSTROOT)$(LOCLIBDIR)/libsyminfo.a
 	$(RANLIB) $(DSTROOT)$(LOCLIBDIR)/libsyminfo.a
 

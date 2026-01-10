@@ -314,45 +314,45 @@ lib_ofiles_install: all
 	$(MKDIRS) $(DSTROOT)$(ARCHIVEDIR) $(DSTROOT)$(DYLIBDIR)
 	@if [ $(SRCROOT) = . ];						\
 	then								\
-	    install -c -m 444 dtmp_obj/libmacho.a			\
+	    install -c -m 644 dtmp_obj/libmacho.a			\
 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;		\
 	    $(RANLIB) $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;		\
 	    (cd $(DSTROOT)$(ARCHIVEDIR) ;				\
 	    rm -f libmacho_debug.a ; ln -s libmacho.a libmacho_debug.a); \
-	    install -c -m 444 ptmp_obj/libmacho_pg.a			 \
+	    install -c -m 644 ptmp_obj/libmacho_pg.a			 \
 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;	\
 	    $(RANLIB) $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;	\
-	    install -c -m 444 otmp_obj/libmacho_static.a		\
+	    install -c -m 644 otmp_obj/libmacho_static.a		\
 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
 	    $(RANLIB) $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;	\
-	    install -c -m 555 dtmp_obj/libmacho.dylib			\
+	    install -c -m 755 dtmp_obj/libmacho.dylib			\
 		     $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\
 	    $(STRIP) -S $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\
-	    install -c -m 555 dtmp_obj/libmacho_profile.dylib		\
+	    install -c -m 755 dtmp_obj/libmacho_profile.dylib		\
 		     $(DSTROOT)$(DYLIBDIR)/libmacho_profile.dylib;	\
 	    $(STRIP) -S $(DSTROOT)$(DYLIBDIR)/libmacho_profile.dylib;	\
-	    install -c -m 555 dtmp_obj/libmacho_debug.dylib		\
+	    install -c -m 755 dtmp_obj/libmacho_debug.dylib		\
 		     $(DSTROOT)$(DYLIBDIR)/libmacho_debug.dylib;	\
 	    $(STRIP) -S $(DSTROOT)$(DYLIBDIR)/libmacho_debug.dylib;	\
 	else								\
-	    install -c -m 444 $(SYMROOT)/libmacho.a			\
+	    install -c -m 644 $(SYMROOT)/libmacho.a			\
 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;		\
 	    $(RANLIB) $(DSTROOT)$(ARCHIVEDIR)/libmacho.a;		\
 	    (cd $(DSTROOT)$(ARCHIVEDIR) ;				\
 	    rm -f libmacho_debug.a ; ln -s libmacho.a libmacho_debug.a); \
-	    install -c -m 444 $(SYMROOT)/libmacho_pg.a			 \
+	    install -c -m 644 $(SYMROOT)/libmacho_pg.a			 \
 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;	\
 	    $(RANLIB) $(DSTROOT)$(ARCHIVEDIR)/libmacho_profile.a;	\
-	    install -c -m 444 $(SYMROOT)/libmacho_static.a		\
+	    install -c -m 644 $(SYMROOT)/libmacho_static.a		\
 		     $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;		\
 	    $(RANLIB) $(DSTROOT)$(ARCHIVEDIR)/libmacho_static.a;	\
-	    install -c -m 555 $(SYMROOT)/libmacho.dylib		\
+	    install -c -m 755 $(SYMROOT)/libmacho.dylib		\
 		     $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\
 	    $(STRIP) -S $(DSTROOT)$(DYLIBDIR)/libmacho.dylib;		\
-	    install -c -m 555 $(SYMROOT)/libmacho_profile.dylib	\
+	    install -c -m 755 $(SYMROOT)/libmacho_profile.dylib	\
 		     $(DSTROOT)$(DYLIBDIR)/libmacho_profile.dylib;	\
 	    $(STRIP) -S $(DSTROOT)$(DYLIBDIR)/libmacho_profile.dylib;	\
-	    install -c -m 555 $(SYMROOT)/libmacho_debug.dylib	\
+	    install -c -m 755 $(SYMROOT)/libmacho_debug.dylib	\
 		     $(DSTROOT)$(DYLIBDIR)/libmacho_debug.dylib;	\
 	    $(STRIP) -S $(DSTROOT)$(DYLIBDIR)/libmacho_debug.dylib;	\
 	fi
@@ -364,7 +364,7 @@ installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(OFILE_DIRS) $(SYMROOT):
 	$(MKDIRS) $@

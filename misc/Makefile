@@ -330,32 +330,32 @@ install_os_tools: os_tools os_tools_install
 
 os_tools_install:
 	$(MKDIRS) $(DSTROOT)$(USRBINDIR)
-	install -c -s -m 555 $(SYMROOT)/strings.NEW \
+	install -c -s -m 755 $(SYMROOT)/strings.NEW \
 		$(DSTROOT)$(USRBINDIR)/strings
-	install -c -s -m 555 $(SYMROOT)/lipo.NEW $(DSTROOT)$(USRBINDIR)/lipo
+	install -c -s -m 755 $(SYMROOT)/lipo.NEW $(DSTROOT)$(USRBINDIR)/lipo
 
 dt_install:
 	$(MKDIRS) $(DSTROOT)$(USRBINDIR)
-	install -c -s -m 555 $(SYMROOT)/strip.NEW $(DSTROOT)$(USRBINDIR)/strip
-	install -c -s -m 555 $(SYMROOT)/size.NEW $(DSTROOT)$(USRBINDIR)/size-classic
+	install -c -s -m 755 $(SYMROOT)/strip.NEW $(DSTROOT)$(USRBINDIR)/strip
+	install -c -s -m 755 $(SYMROOT)/size.NEW $(DSTROOT)$(USRBINDIR)/size-classic
 	(cd $(DSTROOT)$(USRBINDIR); rm -f size; ln -s llvm-size size)
-	install -c -s -m 555 $(SYMROOT)/nm.NEW $(DSTROOT)$(USRBINDIR)/nm-classic
+	install -c -s -m 755 $(SYMROOT)/nm.NEW $(DSTROOT)$(USRBINDIR)/nm-classic
 	(cd $(DSTROOT)$(USRBINDIR); rm -f nm; ln -s llvm-nm nm)
-	install -c -s -m 555 $(SYMROOT)/libtool.NEW \
+	install -c -s -m 755 $(SYMROOT)/libtool.NEW \
 		$(DSTROOT)$(USRBINDIR)/libtool
 	(cd $(DSTROOT)$(USRBINDIR); rm -f ranlib; ln -s libtool ranlib)
-	install -c -s -m 555 $(SYMROOT)/segedit.NEW \
+	install -c -s -m 755 $(SYMROOT)/segedit.NEW \
 		$(DSTROOT)$(USRBINDIR)/segedit
-	install -c -s -m 555 $(SYMROOT)/cmpdylib.NEW \
+	install -c -s -m 755 $(SYMROOT)/cmpdylib.NEW \
 			  $(DSTROOT)$(USRBINDIR)/cmpdylib
-	install -c -s -m 555 $(SYMROOT)/pagestuff.NEW \
+	install -c -s -m 755 $(SYMROOT)/pagestuff.NEW \
 			  $(DSTROOT)$(USRBINDIR)/pagestuff
-	install -c -s -m 555 $(SYMROOT)/redo_prebinding.NEW \
+	install -c -s -m 755 $(SYMROOT)/redo_prebinding.NEW \
 			  $(DSTROOT)$(USRBINDIR)/redo_prebinding
-	install -c -s -m 555 $(SYMROOT)/nmedit.NEW $(DSTROOT)$(USRBINDIR)/nmedit
-	install -c -s -m 555 $(SYMROOT)/install_name_tool.NEW \
+	install -c -s -m 755 $(SYMROOT)/nmedit.NEW $(DSTROOT)$(USRBINDIR)/nmedit
+	install -c -s -m 755 $(SYMROOT)/install_name_tool.NEW \
 			  $(DSTROOT)$(USRBINDIR)/install_name_tool
-	install -c -s -m 555 $(SYMROOT)/codesign_allocate.NEW \
+	install -c -s -m 755 $(SYMROOT)/codesign_allocate.NEW \
 			  $(DSTROOT)$(USRBINDIR)/codesign_allocate
 	(cd $(DSTROOT)$(USRBINDIR); rm -f codesign_allocate-p; \
 		ln -s codesign_allocate codesign_allocate-p)
@@ -368,31 +368,31 @@ dt_install:
 	    cp $(DSTROOT)$(USRBINDIR)/codesign_allocate                       \
 		$(RAW_DSTROOT)/usr/libexec/DeveloperTools;                    \
 	fi
-	install -c -s -m 555 $(SYMROOT)/ctf_insert.NEW \
+	install -c -s -m 755 $(SYMROOT)/ctf_insert.NEW \
 			  $(DSTROOT)$(USRBINDIR)/ctf_insert
-	install -c -s -m 555 $(SYMROOT)/bitcode_strip.NEW \
+	install -c -s -m 755 $(SYMROOT)/bitcode_strip.NEW \
 			  $(DSTROOT)$(USRBINDIR)/bitcode_strip
 	$(MKDIRS) $(DSTROOT)$(LOCBINDIR)
-	install -c -s -m 555 $(SYMROOT)/checksyms.NEW \
+	install -c -s -m 755 $(SYMROOT)/checksyms.NEW \
 			  $(DSTROOT)$(LOCBINDIR)/checksyms
-	install -c -s -m 555 $(SYMROOT)/seg_addr_table.NEW \
+	install -c -s -m 755 $(SYMROOT)/seg_addr_table.NEW \
 			  $(DSTROOT)$(LOCBINDIR)/seg_addr_table
-	install -c -s -m 555 $(SYMROOT)/check_dylib.NEW \
+	install -c -s -m 755 $(SYMROOT)/check_dylib.NEW \
 			  $(DSTROOT)$(LOCBINDIR)/check_dylib
-	install -c -s -m 555 $(SYMROOT)/indr.NEW $(DSTROOT)$(LOCBINDIR)/indr
-	install -c -s -m 555 $(SYMROOT)/seg_hack.NEW \
+	install -c -s -m 755 $(SYMROOT)/indr.NEW $(DSTROOT)$(LOCBINDIR)/indr
+	install -c -s -m 755 $(SYMROOT)/seg_hack.NEW \
 			  $(DSTROOT)$(LOCBINDIR)/seg_hack
 
 lib_ofiles_install: lib_ofiles
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)
-	install -p -c -m 444 $(SYMROOT)/libredo_prebinding.a \
+	install -p -c -m 644 $(SYMROOT)/libredo_prebinding.a \
 		 $(DSTROOT)$(LOCLIBDIR)/libredo_prebinding.a
 
 installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(OFILE_DIR) $(SYMROOT):
 	$(MKDIRS) $@

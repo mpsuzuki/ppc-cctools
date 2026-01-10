@@ -81,22 +81,22 @@ install:
 	$(MKDIRS) $(DSTROOT)$(EFIBINDIR) $(DSTROOT)$(LOCBINDIR)
 # For now don't overwrite the existing makerelocs program the efitools project
 # builds.
-#	install -c -s -m 555 $(SYMROOT)/makerelocs.NEW \
+#	install -c -s -m 755 $(SYMROOT)/makerelocs.NEW \
 #		$(DSTROOT)$(EFIBINDIR)/makerelocs
-	install -c -s -m 555 $(SYMROOT)/mtoc.NEW \
+	install -c -s -m 755 $(SYMROOT)/mtoc.NEW \
 		$(DSTROOT)$(EFIBINDIR)/mtoc
-	install -c -s -m 555 $(SYMROOT)/mtoc.NEW \
+	install -c -s -m 755 $(SYMROOT)/mtoc.NEW \
 		$(DSTROOT)$(LOCBINDIR)/mtoc
-	install -c -s -m 555 $(SYMROOT)/mtor.NEW \
+	install -c -s -m 755 $(SYMROOT)/mtor.NEW \
 		$(DSTROOT)$(EFIBINDIR)/mtor
-	install -c -s -m 555 $(SYMROOT)/mtor.NEW \
+	install -c -s -m 755 $(SYMROOT)/mtor.NEW \
 		$(DSTROOT)$(LOCBINDIR)/mtor
 
 installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(OFILE_DIR) $(SYMROOT):
 	$(MKDIRS) $@

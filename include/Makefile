@@ -194,70 +194,70 @@ teflon_install macos_install: common_install
 
 nextstep_install: common_install
 	cd mach-o; \
-	    install -c -m 444 ${IFLAGS} gmon.h \
+	    install -c -m 644 ${IFLAGS} gmon.h \
 	    ${DSTROOT}${$(RC_OS)_INCDIR}/mach-o
 
 common_install:
 	cd mach-o; \
-	    install -c -m 444 ${IFLAGS} arch.h ldsyms.h reloc.h \
+	    install -c -m 644 ${IFLAGS} arch.h ldsyms.h reloc.h \
 	    stab.h loader.h fat.h swap.h getsect.h nlist.h \
 	    ranlib.h ${DSTROOT}${$(RC_OS)_INCDIR}/mach-o
 	if [ $(OLD_DYLD_STUFF) ];				\
 	then							\
-	    cd mach-o; install -c -m 444 ${IFLAGS} dyld.h dyld_debug.h	\
+	    cd mach-o; install -c -m 644 ${IFLAGS} dyld.h dyld_debug.h	\
 		${DSTROOT}${$(RC_OS)_INCDIR}/mach-o ;		\
 	fi
 	cd mach-o/i386; \
-	    install -c -m 444 ${IFLAGS} swap.h \
+	    install -c -m 644 ${IFLAGS} swap.h \
 	    ${DSTROOT}${$(RC_OS)_INCDIR}/mach-o/i386
 	cd mach-o/ppc; \
-	    install -c -m 444 ${IFLAGS} reloc.h swap.h \
+	    install -c -m 644 ${IFLAGS} reloc.h swap.h \
 	    ${DSTROOT}${$(RC_OS)_INCDIR}/mach-o/ppc
 	cd mach-o/x86_64; \
-	    install -c -m 444 ${IFLAGS} reloc.h \
+	    install -c -m 644 ${IFLAGS} reloc.h \
 	    ${DSTROOT}${$(RC_OS)_INCDIR}/mach-o/x86_64
 	cd mach-o/arm; \
-	    install -c -m 444 ${IFLAGS} reloc.h \
+	    install -c -m 644 ${IFLAGS} reloc.h \
 	    ${DSTROOT}${$(RC_OS)_INCDIR}/mach-o/arm
 	cd mach-o/arm64; \
-	    install -c -m 444 ${IFLAGS} reloc.h \
+	    install -c -m 644 ${IFLAGS} reloc.h \
 	    ${DSTROOT}${$(RC_OS)_INCDIR}/mach-o/arm64
 	cd mach-o/m68k; \
-	    install -c -m 444 ${IFLAGS} swap.h \
+	    install -c -m 644 ${IFLAGS} swap.h \
 	    ${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o/m68k
 	cd mach-o/sparc; \
-	    install -c -m 444 ${IFLAGS} reloc.h swap.h \
+	    install -c -m 644 ${IFLAGS} reloc.h swap.h \
 	    ${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o/sparc
 	cd mach-o/hppa; \
-	    install -c -m 444 ${IFLAGS} reloc.h swap.h \
+	    install -c -m 644 ${IFLAGS} reloc.h swap.h \
 	    ${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o/hppa
 	cd mach-o/i860; \
-	    install -c -m 444 ${IFLAGS} reloc.h swap.h \
+	    install -c -m 644 ${IFLAGS} reloc.h swap.h \
 	    ${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o/i860
 	cd mach-o/m88k; \
-	    install -c -m 444 ${IFLAGS} reloc.h swap.h \
+	    install -c -m 644 ${IFLAGS} reloc.h swap.h \
 	    ${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o/m88k
 	if [ $(OLD_RLD_STUFF) ];					  \
 	then								  \
-	    cd mach-o; install -c -m 444 ${IFLAGS} rld.h rld_state.h 	  \
+	    cd mach-o; install -c -m 644 ${IFLAGS} rld.h rld_state.h 	  \
 	        ${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o ;		  \
 	fi
 	if [ $(OLD_DYLD_STUFF) ];					  \
 	then								  \
-	    cd mach-o; install -c -m 444 ${IFLAGS} dyld_gdb.h dyld_priv.h \
+	    cd mach-o; install -c -m 644 ${IFLAGS} dyld_gdb.h dyld_priv.h \
 		${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o ;		  \
 	fi
 	if [ $(OLD_RLD_STUFF) ];					  \
 	then								  \
 	    cd mach-o;							  \
-	      install -c -m 444 ${IFLAGS} sarld.h kld.h redo_prebinding.h \
+	      install -c -m 644 ${IFLAGS} sarld.h kld.h redo_prebinding.h \
 	      ${DSTROOT}${$(RC_OS)_LOCINCDIR}/mach-o ;			  \
 	fi
 	cd stuff; \
-	    install -c -m 444 ${IFLAGS} bool.h \
+	    install -c -m 644 ${IFLAGS} bool.h \
 	    ${DSTROOT}${$(RC_OS)_LOCINCDIR}/dyld
 	cd cbt; \
-	    install -c -m 444 ${IFLAGS} libsyminfo.h \
+	    install -c -m 644 ${IFLAGS} libsyminfo.h \
 	    ${DSTROOT}${$(RC_OS)_LOCINCDIR}/cbt
 
 dirs:

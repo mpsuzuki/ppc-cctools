@@ -49,17 +49,17 @@ shlib_clean:
 install: all
 # No longer install gprof and its files.
 #	$(MKDIRS) $(DSTROOT)$(USRBINDIR)
-#	install -c -s -m 555 $(SYMROOT)/$(PRODUCT).NEW \
+#	install -c -s -m 755 $(SYMROOT)/$(PRODUCT).NEW \
 #		$(DSTROOT)$(USRBINDIR)/$(PRODUCT)
 #	$(MKDIRS) $(DSTROOT)$(LIBDIR)
-#	install -c -m 444 gprof.flat $(DSTROOT)$(LIBDIR)
-#	install -c -m 444 gprof.callg $(DSTROOT)$(LIBDIR)
+#	install -c -m 644 gprof.flat $(DSTROOT)$(LIBDIR)
+#	install -c -m 644 gprof.callg $(DSTROOT)$(LIBDIR)
 
 installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(OFILE_DIR) $(SYMROOT):
 	$(MKDIRS) $@

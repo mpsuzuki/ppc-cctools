@@ -362,20 +362,20 @@ install: $(OFILE_DIRS) $(SYMROOT) ld_build $(RC_OS)_lib_ofiles $(RC_OS)_install
 
 macos_install:
 	$(MKDIRS) $(DSTROOT)$(USRBINDIR)
-	install -c -s -m 555 $(SYMROOT)/ld_dir/ld.NEW \
+	install -c -s -m 755 $(SYMROOT)/ld_dir/ld.NEW \
 		$(DSTROOT)$(USRBINDIR)/ld_classic
 
 teflon_install: common_install
 	$(MKDIRS) $(DSTROOT)$(USRBINDIR)
-	install -c -s -m 555 $(SYMROOT)/ld_dir/ld.NEW $(DSTROOT)$(USRBINDIR)/ld
+	install -c -s -m 755 $(SYMROOT)/ld_dir/ld.NEW $(DSTROOT)$(USRBINDIR)/ld
 
 nextstep_install: common_install
 	$(MKDIRS) $(DSTROOT)$(BINDIR)
-	install -c -s -m 555 $(SYMROOT)/ld_dir/ld.NEW $(DSTROOT)$(BINDIR)/ld
+	install -c -s -m 755 $(SYMROOT)/ld_dir/ld.NEW $(DSTROOT)$(BINDIR)/ld
 
 common_install:
 	$(MKDIRS) $(DSTROOT)$(LOCLIBDIR)
-	-install -p -c -m 444 $(SYMROOT)/ld_dir/libsarld.a \
+	-install -p -c -m 644 $(SYMROOT)/ld_dir/libsarld.a \
 		$(DSTROOT)$(LOCLIBDIR)/libsarld.a
 
 lib_ofiles_install: $(RC_OS)_lib_ofiles_install
@@ -406,33 +406,33 @@ macos_lib_ofiles_install: $(KLD_BUILD) $(X_LIB_OFILES)
 	then								\
 	    if [ $(SRCROOT) = . ];					\
 	    then							\
-		install -p -c -m 444 dtmp_obj/librld.a			\
+		install -p -c -m 644 dtmp_obj/librld.a			\
 			 $(DSTROOT)$(LOCLIBDIR)/librld.a ;		\
 		$(RANLIB) $(DSTROOT)$(LOCLIBDIR)/librld.a ;		\
-		install -p -c -m 444 dtmp_obj/librld.a			\
+		install -p -c -m 644 dtmp_obj/librld.a			\
 			 $(DSTROOT)$(SYSTEMDIR)/librld.a ;		\
 		$(RANLIB) $(DSTROOT)$(SYSTEMDIR)/librld.a ;		\
 		(cd $(DSTROOT)$(SYSTEMDIR);				\
 		rm -f librld_debug.a ; ln -s librld.a librld_debug.a) ;	\
-		install -p -c -m 444 ptmp_obj/librld_pg.a		\
+		install -p -c -m 644 ptmp_obj/librld_pg.a		\
 			 $(DSTROOT)$(LOCLIBDIR)/librld_profile.a ;	\
 		$(RANLIB) $(DSTROOT)$(LOCLIBDIR)/librld_profile.a ;	\
-		install -p -c -m 444 ptmp_obj/ld_dir/librld_pg.a	\
+		install -p -c -m 644 ptmp_obj/ld_dir/librld_pg.a	\
 			 $(DSTROOT)$(SYSTEMDIR)/librld_profile.a ;	\
 		$(RANLIB) $(DSTROOT)$(SYSTEMDIR)/librld_profile.a ;	\
 	    else							\
-		install -p -c -m 444 $(SYMROOT)/ld_dir/librld.a		\
+		install -p -c -m 644 $(SYMROOT)/ld_dir/librld.a		\
 			 $(DSTROOT)$(LOCLIBDIR)/librld.a ;		\
 		$(RANLIB) $(DSTROOT)$(LOCLIBDIR)/librld.a ;		\
-		install -p -c -m 444 $(SYMROOT)/ld_dir/librld.a		\
+		install -p -c -m 644 $(SYMROOT)/ld_dir/librld.a		\
 			 $(DSTROOT)$(SYSTEMDIR)/librld.a ;		\
 		$(RANLIB) $(DSTROOT)$(SYSTEMDIR)/librld.a ;		\
 		(cd $(DSTROOT)$(SYSTEMDIR);				\
 		rm -f librld_debug.a ; ln -s librld.a librld_debug.a) ;	\
-		install -p -c -m 444 $(SYMROOT)/ld_dir/librld_pg.a	\
+		install -p -c -m 644 $(SYMROOT)/ld_dir/librld_pg.a	\
 			 $(DSTROOT)$(LOCLIBDIR)/librld_profile.a ;	\
 		$(RANLIB) $(DSTROOT)$(LOCLIBDIR)/librld_profile.a ;	\
-		install -p -c -m 444 $(SYMROOT)/ld_dir/librld_pg.a	\
+		install -p -c -m 644 $(SYMROOT)/ld_dir/librld_pg.a	\
 			 $(DSTROOT)$(SYSTEMDIR)/librld_profile.a ;	\
 		$(RANLIB) $(DSTROOT)$(SYSTEMDIR)/librld_profile.a ;	\
 	    fi								\
@@ -442,14 +442,14 @@ macos_lib_ofiles_install: $(KLD_BUILD) $(X_LIB_OFILES)
 	then								\
 	    if [ $(SRCROOT) = . ];					\
 	    then							\
-		install -p -c -m 444 static_kld/libkld.a		\
+		install -p -c -m 644 static_kld/libkld.a		\
 			$(DSTROOT)$(LOCLIBDIR)/libkld.a ;		\
-		install -p -c -m 444 dynamic_kld/libkld.dylib		\
+		install -p -c -m 644 dynamic_kld/libkld.dylib		\
 			$(DSTROOT)$(LOCLIBDIR)/libkld.dylib ;		\
 	    else							\
-		install -p -c -m 444 $(SYMROOT)/ld_dir/libkld.a		\
+		install -p -c -m 644 $(SYMROOT)/ld_dir/libkld.a		\
 			$(DSTROOT)$(LOCLIBDIR)/libkld.a ;		\
-		install -p -c -m 444 $(SYMROOT)/ld_dir/libkld.dylib	\
+		install -p -c -m 644 $(SYMROOT)/ld_dir/libkld.dylib	\
 			$(DSTROOT)$(LOCLIBDIR)/libkld.dylib ;		\
 	    fi								\
 	fi
@@ -460,7 +460,7 @@ installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(OFILE_DIRS) $(SYMROOT) $(SYMROOT)/ld_dir ld_g_dir ld_p_dir:
 	$(MKDIRS) $@

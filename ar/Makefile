@@ -48,16 +48,16 @@ shlib_clean:
 	-rm -f make.out
 
 install: all $(DSTDIRS)
-	install -c -s -m 555 $(SYMROOT)/$(PRODUCT).NEW \
+	install -c -s -m 755 $(SYMROOT)/$(PRODUCT).NEW \
 		$(DSTROOT)$(BINDIR)/$(PRODUCT)
-	install -c -m 444 $(MAN1) $(DSTROOT)$(MANDIR)/man1
-	install -c -m 444 $(MAN5) $(DSTROOT)$(MANDIR)/man5
+	install -c -m 644 $(MAN1) $(DSTROOT)$(MANDIR)/man1
+	install -c -m 644 $(MAN5) $(DSTROOT)$(MANDIR)/man5
 
 installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(OFILE_DIR) $(SYMROOT) $(DSTDIRS):
 	$(MKDIRS) $@

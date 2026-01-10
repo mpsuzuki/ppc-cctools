@@ -39,27 +39,27 @@ DSTDIRS = $(DSTROOT)$(MANDIR)/man3 \
 	  $(DSTROOT)$(LOCMANDIR)/man3 $(DSTROOT)$(EFIMANDIR)/man1
 
 install_os_tools: $(DSTDIRS_MAN1) $(OS_MAN1)
-	install -c -m 444 $(OS_MAN1) $(DSTROOT)$(MANDIR)/man1
+	install -c -m 644 $(OS_MAN1) $(DSTROOT)$(MANDIR)/man1
 
 install: $(DSTDIRS) $(DSTDIRS_MAN1) $(COMMON_MAN1) $(MAN3) $(MAN5) $(MANL) \
 	 $(RC_OS) $(MANL3) install_os_tools
-	install -c -m 444 $(COMMON_MAN1) $(DSTROOT)$(MANDIR)/man1
+	install -c -m 644 $(COMMON_MAN1) $(DSTROOT)$(MANDIR)/man1
 	if [ $(OLD_DYLD_STUFF) ];					\
 	then								\
-	    install -c -m 444 $(DYLD_MAN1) $(DSTROOT)$(MANDIR)/man1 ;	\
+	    install -c -m 644 $(DYLD_MAN1) $(DSTROOT)$(MANDIR)/man1 ;	\
 	fi
-	install -c -m 444 $(MAN3) $(DSTROOT)$(MANDIR)/man3
+	install -c -m 644 $(MAN3) $(DSTROOT)$(MANDIR)/man3
 	if [ $(OLD_DYLD_STUFF) ];					\
 	then								\
-	    install -c -m 444 $(DYLD_MAN3) $(DSTROOT)$(MANDIR)/man3 ;	\
+	    install -c -m 644 $(DYLD_MAN3) $(DSTROOT)$(MANDIR)/man3 ;	\
 	fi
-	install -c -m 444 $(MAN5) $(DSTROOT)$(MANDIR)/man5
-	install -c -m 444 $(MANL) $(DSTROOT)$(LOCMANDIR)/man1
-	install -c -m 444 $(MANL3) $(DSTROOT)$(LOCMANDIR)/man3
-	install -c -m 444 $(EFI1) $(DSTROOT)$(EFIMANDIR)/man1
+	install -c -m 644 $(MAN5) $(DSTROOT)$(MANDIR)/man5
+	install -c -m 644 $(MANL) $(DSTROOT)$(LOCMANDIR)/man1
+	install -c -m 644 $(MANL3) $(DSTROOT)$(LOCMANDIR)/man3
+	install -c -m 644 $(EFI1) $(DSTROOT)$(EFIMANDIR)/man1
 	if [ $(OLD_DYLD_STUFF) ];					\
 	then								\
-	    install -c -m 444 $(DYLD_MANL3) $(DSTROOT)$(LOCMANDIR)/man3;\
+	    install -c -m 644 $(DYLD_MANL3) $(DSTROOT)$(LOCMANDIR)/man3;\
 	fi
 
 teflon macos:
@@ -70,7 +70,7 @@ installsrc:
 	$(MKDIRS) $(SRCROOT)
 	chmod 755 $(SRCROOT)
 	gnutar cf - $(INSTALL_FILES) | (cd $(SRCROOT); gnutar xf -)
-	chmod 444 $(SRCROOT)/*
+	chmod 644 $(SRCROOT)/*
 
 $(DSTDIRS) $(DSTDIRS_MAN1):
 	$(MKDIRS) $@
