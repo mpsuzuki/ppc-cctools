@@ -1,3 +1,13 @@
 # Don't track content of these folders 
 **/xcuserdata
-
+# Ignore built files
+**/*.swp
+**/*.tmp
+**/*.[ao]
+**/*.dylib
+**/*.dSYM/*
+**/*.NEW
+as/*_dir/*
+lib*/*_obj
+# Ignore test installation
+root/*
