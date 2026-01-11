@@ -9,5 +9,7 @@
 **/*.NEW
 as/*_dir/*
 lib*/*_obj
+**/vers.c
+**/Makedep
 # Ignore test installation
 root/*
